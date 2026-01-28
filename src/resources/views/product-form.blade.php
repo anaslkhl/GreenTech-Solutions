@@ -19,20 +19,7 @@
                 <h2>GreenTech Admin</h2>
             </div>
 
-            <nav class="sidebar-nav">
-                <a href="{{ route('admin.dashboard') }}" class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Tableau de bord</span>
-                </a>
-                <a href="{{ route('admin.products.index') }}" class="nav-item active">
-                    <i class="fas fa-box"></i>
-                    <span>Produits</span>
-                </a>
-                <a href="{{ route('admin.categories.index') }}" class="nav-item">
-                    <i class="fas fa-tags"></i>
-                    <span>Catégories</span>
-                </a>
-            </nav>
+         
 
             <div class="sidebar-footer">
                 <a href="{{ route('catalog.index') }}" class="nav-item">
