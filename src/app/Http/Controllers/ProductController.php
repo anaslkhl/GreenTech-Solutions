@@ -11,6 +11,8 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
+        var_dump($request->category);
+        exit;
 
         Product::create([
             'name' => $request->name,
@@ -21,4 +23,9 @@ class ProductController extends Controller
         ]);
         return true;
     }
+
+    // public function update()
+    // {
+
+    // }
 }
