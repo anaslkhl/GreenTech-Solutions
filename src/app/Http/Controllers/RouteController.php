@@ -14,7 +14,7 @@ class RouteController extends Controller
 
     public function form()
     {
-        return view('product-form');
+        return view('form');
     }
 
     public function catalog()
@@ -24,11 +24,11 @@ class RouteController extends Controller
 
     public function product()
     {
-        return view('product-detail');
+        return view('product');
     }
 
     public function admin()
     {
-        return view('admin-dashboard');
+        return view('dashboard');
     }
 }

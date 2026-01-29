@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,12 @@ Route::get('/', function () {
 
 Route::get('/home', [RouteController::class ,'home']);
 Route::get('/catalog', [RouteController::class ,'catalog']);
-Route::get('/admin-dashboard', [RouteController::class ,'admin']);
-Route::get('/product-detail', [RouteController::class ,'product']);
-Route::get('/product-form', [RouteController::class ,'form']);
+Route::get('/dashboard', [RouteController::class ,'dashboard']);
+Route::get('/product', [RouteController::class ,'product']);
+
+Route::get('/form', [RouteController::class ,'form']);
+
+
+Route::post('/form', [ProductController::class ,'create']);
+
+
