@@ -38,14 +38,14 @@
 
         <div class="container-pro">
 
-            <form class="product-cont" action="form" method="POST">
+            <form class="product-cont" action="update" method="POST">
                 @csrf
                 <h3><i class="fas fa-box"></i> Ajouter un produit</h3>
 
                 <label for="name">Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" value="{{$product->name}}">
                 <label for="price">Price</label>
-                <input type="number" name="price">
+                <input type="number" name="price" value="{{$product->prix}}">
                 <label for="category">Category</label>
                 <select class="category-select" name="category_id">
                     @foreach($category as $catego)
@@ -53,10 +53,10 @@
                     @endforeach
                 </select>
                 <label for="description">Description</label>
-                <textarea name="description"></textarea>
-                <label for="imageLink">Image link</label>
-                <input type="imageLink" name="imageLink">
-                <button type="submit">Add</button>
+                <textarea name="description">{{$product->description}}</textarea>
+                <label for="imageLink"></label>
+                <input type="imageLink" name="imageLink" value="{{$product->image}}">
+                <button type="submit">Update</button>
             </form>
         </div>
 

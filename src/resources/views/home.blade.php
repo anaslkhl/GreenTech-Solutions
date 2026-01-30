@@ -120,81 +120,32 @@
                 </select>
             </div>
         </div>
-
-        <!-- Products Grid -->
+        
         <div class="products-grid">
-            <!-- Product cards will be loaded dynamically -->
-            <div class="product-card">
+        @foreach($products as $product)
+        <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Plante Médicinale">
+                    <img src="" alt="Plante Médicinale">
                     <div class="product-status in-stock">En stock</div>
                 </div>
                 <div class="product-info">
                     <span class="product-category">Plantes</span>
-                    <h3>Plante Médicinale Bio</h3>
-                    <p class="product-desc">Plante aux propriétés médicinales exceptionnelles, cultivée sans pesticides.</p>
-                    <div class="product-price">€24.99</div>
+                    <h3>{{$product->name}}</h3>
+                    <p class="product-desc">{{$product->description}}</p>
+                    <div class="product-price">{{$product->prix}}</div>
                     <button class="btn-view">
                         <i class="fas fa-eye"></i> Voir détails
                     </button>
                 </div>
             </div>
+            @endforeach
 
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Graines Bio">
-                    <div class="product-status in-stock">En stock</div>
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Graines</span>
-                    <h3>Graines Légumes Bio</h3>
-                    <p class="product-desc">Pack de graines biologiques pour potager familial. Rendement garanti.</p>
-                    <div class="product-price">€12.50</div>
-                    <button class="btn-view">
-                        <i class="fas fa-eye"></i> Voir détails
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1584735175315-9d5df23860e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Outil Agricole">
-                    <div class="product-status low-stock">Stock limité</div>
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Outils</span>
-                    <h3>Kit Outils Premium</h3>
-                    <p class="product-desc">Ensemble d'outils ergonomiques pour l'entretien de votre jardin.</p>
-                    <div class="product-price">€89.99</div>
-                    <button class="btn-view">
-                        <i class="fas fa-eye"></i> Voir détails
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1483794344563-d27a8d18014e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Système Irrigation">
-                    <div class="product-status in-stock">En stock</div>
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Outils</span>
-                    <h3>Système d'Irrigation Smart</h3>
-                    <p class="product-desc">Système intelligent d'irrigation goutte à goutte avec contrôle mobile.</p>
-                    <div class="product-price">€149.99</div>
-                    <button class="btn-view">
-                        <i class="fas fa-eye"></i> Voir détails
-                    </button>
-                </div>
+            <div class="load-more">
+                <button class="btn-load">
+                    <i class="fas fa-redo"></i> Charger plus de produits
+                </button>
             </div>
         </div>
-
-        <div class="load-more">
-            <button class="btn-load">
-                <i class="fas fa-redo"></i> Charger plus de produits
-            </button>
-        </div>
-    </div>
 </section>
 
 <!-- Features Section -->

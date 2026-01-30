@@ -4,20 +4,22 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [ProductController::class, 'getAll']);
 
 
 
-Route::get('/home', [RouteController::class ,'home']);
-Route::get('/catalog', [RouteController::class ,'catalog']);
-Route::get('/dashboard', [RouteController::class ,'dashboard']);
-Route::get('/product', [RouteController::class ,'product']);
+Route::get('/catalog', [RouteController::class, 'catalog']);
+Route::get('/dashboard', [RouteController::class, 'dashboard']);
+Route::get('/product', [ProductController::class, 'getCategory']);
 
-Route::get('/form', [RouteController::class ,'form']);
+Route::get('/form', [RouteController::class, 'form']);
+
+Route::get('/home', [ProductController::class, 'getAll']);
+
+Route::get('/form', [ProductController::class, 'create']);
+Route::post('/form', [ProductController::class, 'store']);
 
 
-Route::post('/form', [ProductController::class ,'create']);
-
-
+Route::get('/products/delete/{id}',[ProductController::class, 'delete']);
+Route::get('/edit{id}', [ProductController::class, 'edit']);
+Route::post('/update', [ProductController::class, 'update']);

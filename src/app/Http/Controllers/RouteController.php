@@ -27,8 +27,13 @@ class RouteController extends Controller
         return view('product');
     }
 
-    public function admin()
+    public function dashboard()
     {
         return view('dashboard');
+    }
+
+    public function edit()
+    {
+        return view('edit');
     }
 }

@@ -19,7 +19,7 @@
             </div>
 
             <div class="sidebar-footer">
-                <a href="#" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
                     <span>Retour au site</span>
                 </a>
