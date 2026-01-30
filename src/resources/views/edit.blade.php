@@ -38,14 +38,14 @@
 
         <div class="container-pro">
 
-            <form class="product-cont" action="update" method="POST">
+            <form class="product-cont" action="/update/{{$product->id}}" method="POST">
                 @csrf
                 <h3><i class="fas fa-box"></i> Ajouter un produit</h3>
 
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{$product->name}}">
                 <label for="price">Price</label>
-                <input type="number" name="price" value="{{$product->prix}}">
+                <input type="number" name="prix" value="{{$product->prix}}">
                 <label for="category">Category</label>
                 <select class="category-select" name="category_id">
                     @foreach($category as $catego)

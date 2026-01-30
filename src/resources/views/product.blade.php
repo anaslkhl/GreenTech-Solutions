@@ -33,7 +33,7 @@
                     <div class="product-card">
 
                         <div class="product-image">
-                            <img src="{{ $product->image ?? 'https://via.placeholder.com/300x200' }}" alt="{{ $product->name }}">
+                            <img src="{{ asset($product->image) }}" width="120">
                             <div class="product-status in-stock">En stock</div>
                         </div>
 
@@ -57,7 +57,7 @@
                                     <i class="fas fa-eye"></i> View
                                 </button>
 
-                                <a href="{{ url('/edit'.$product->id) }}" class="btn-edit">
+                                <a href="{{ url('/edit/'.$product->id) }}" class="btn-edit">
                                     <i class="fas fa-edit"></i> Update
                                 </a>
 

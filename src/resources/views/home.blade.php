@@ -103,27 +103,44 @@
         </div>
 
         <!-- Filters -->
-        <div class="filters">
+        <form class="filters" action="/products/filter" method="GET">
+
             <div class="filter-tags">
-                <button class="filter-tag active">Tous les produits</button>
-                <button class="filter-tag">Plantes</button>
-                <button class="filter-tag">Graines</button>
-                <button class="filter-tag">Outils</button>
+                <button type="submit" name="category" value="" class="filter-tag active">
+                    Tous les produits
+                </button>
+
+                <button type="submit" name="category" value="plantes" class="filter-tag">
+                    Plantes
+                </button>
+
+                <button type="submit" name="category" value="graines" class="filter-tag">
+                    Graines
+                </button>
+
+                <button type="submit" name="category" value="outils" class="filter-tag">
+                    Outils
+                </button>
             </div>
 
             <div class="filter-search">
-                <input type="text" placeholder="Rechercher par nom...">
-                <select>
-                    <option>Trier par : Prix croissant</option>
-                    <option>Trier par : Prix décroissant</option>
-                    <option>Trier par : Nom</option>
+                <input type="text" name="search" placeholder="Rechercher par nom...">
+
+                <select name="sort">
+                    <option value="price_asc">Prix croissant</option>
+                    <option value="price_desc">Prix décroissant</option>
+                    <option value="name">Nom</option>
                 </select>
+
+                <button type="submit">Rechercher</button>
             </div>
-        </div>
-        
+
+        </form>
+
+
         <div class="products-grid">
-        @foreach($products as $product)
-        <div class="product-card">
+            @foreach($products as $product)
+            <div class="product-card">
                 <div class="product-image">
                     <img src="" alt="Plante Médicinale">
                     <div class="product-status in-stock">En stock</div>

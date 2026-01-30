@@ -20,6 +20,8 @@ Route::get('/form', [ProductController::class, 'create']);
 Route::post('/form', [ProductController::class, 'store']);
 
 
-Route::get('/products/delete/{id}',[ProductController::class, 'delete']);
-Route::get('/edit{id}', [ProductController::class, 'edit']);
-Route::post('/update', [ProductController::class, 'update']);
+Route::get('/products/delete/{id}', [ProductController::class, 'delete']);
+Route::get('/edit/{id}', [ProductController::class, 'edit']);
+Route::post('/update/{id}', [ProductController::class, 'update']);
+
+Route::get('/products/filter', [ProductController::class, 'filter']);

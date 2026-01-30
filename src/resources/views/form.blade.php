@@ -45,7 +45,7 @@
                 <label for="name">Name</label>
                 <input type="text" name="name">
                 <label for="price">Price</label>
-                <input type="number" name="price">
+                <input type="number" name="prix">
                 <label for="category">Category</label>
                 <select class="category-select" name="category_id">
                     @foreach($category as $catego)
@@ -55,7 +55,7 @@
                 <label for="description">Description</label>
                 <textarea name="description"></textarea>
                 <label for="imageLink">Image link</label>
-                <input type="imageLink" name="imageLink">
+                <input type="file" name="image">
                 <button type="submit">Add</button>
             </form>
         </div>

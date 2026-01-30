@@ -18,10 +18,12 @@ class ProductController extends Controller
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
-            'prix' => $request->price,
+            'prix' => $request->prix,
             'image' => $request->imageLink,
             'category_id' => $request->category_id
         ]);
+
+
         return redirect('/home')->with('Succes', 'Product added');
     }
 
@@ -64,5 +66,25 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $category = Category::all();
         return view('/edit', compact('category', 'product'));
+    }
+
+
+    public function filter(Request $request)
+    {
+        $query = Product::query();
+
+        if ($request->search) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->category) {
+            $query->whereHas('category', function($q) use ($request){
+                $q->where('name',$request->category);
+            });
+
+        }
+
+        $products = $query->get();
+        return view('home', compact('products'));
     }
 }
