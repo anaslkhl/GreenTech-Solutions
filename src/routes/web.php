@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,6 @@ Route::get('/edit/{id}', [ProductController::class, 'edit']);
 Route::post('/update/{id}', [ProductController::class, 'update']);
 
 Route::get('/products/filter', [ProductController::class, 'filter']);
+
+
+Route::post('/register', [LoginController::class, 'register']);
