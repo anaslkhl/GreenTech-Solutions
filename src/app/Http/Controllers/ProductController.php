@@ -40,7 +40,7 @@ class ProductController extends Controller
         return view('home', compact('products'));
     }
 
-    public function getCategory()
+    public function getCategory()   
     {
         $products = Product::all();
         return view('product', compact('products'));

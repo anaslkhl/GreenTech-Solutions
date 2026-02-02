@@ -44,6 +44,7 @@ a {
     background: white;
     box-shadow: 0 2px 20px var(--shadow);
     position: sticky;
+    /* list-style-type: none; */
     top: 0;
     z-index: 1000;
     animation: slideDown 0.5s ease;
@@ -65,6 +66,7 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 20px;
+    list-style-type: armenian;
 }
 
 .nav-brand {
@@ -102,6 +104,8 @@ a {
 .nav-link {
     color: var(--dark);
     font-weight: 500;
+    list-style-type: none;
+
     position: relative;
 }
 
@@ -2626,21 +2630,24 @@ p {
 }
 
 /* ===== NAVBAR ===== */
-.navbar {
+/* .navbar {
     background: white;
     box-shadow: var(--shadow);
+    list-style-type: none;
+
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-}
-
+} */
+/* 
 .navbar .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-}
+    list-style-type: none;
+} */
 
 .nav-brand .logo {
     display: flex;

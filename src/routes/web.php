@@ -27,5 +27,8 @@ Route::post('/update/{id}', [ProductController::class, 'update']);
 
 Route::get('/products/filter', [ProductController::class, 'filter']);
 
+Route::get('/register', [LoginController::class, 'showRegisterForm']);
 
+
+Route::get('/hello', [LoginController::class, 'hello']);
 Route::post('/register', [LoginController::class, 'register']);

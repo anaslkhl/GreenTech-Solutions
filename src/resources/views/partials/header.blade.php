@@ -25,6 +25,7 @@
                 <li><a href="{{ url('/product') }}">Product detail</a></li>
                 <li><a href="{{ url('/form') }}">Add Product</a></li>
                 <li><a href="{{ url('/catalog') }}">Catalog</a></li>
+                <li><a href="{{ url('/register') }}">Login/SingUp</a></li>
             </ul>
 
             <div class="burger">
