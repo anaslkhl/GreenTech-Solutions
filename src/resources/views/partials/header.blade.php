@@ -13,7 +13,7 @@
 <body>
 
     <nav class="navbar">
-        <div class="container">
+        <div class="containernav">
             <div class="nav-brand">
                 <i class="fas fa-leaf"></i>
                 <span>GreenTech Solutions</span>
@@ -25,14 +25,25 @@
                 <li><a href="{{ url('/product') }}">Product detail</a></li>
                 <li><a href="{{ url('/form') }}">Add Product</a></li>
                 <li><a href="{{ url('/catalog') }}">Catalog</a></li>
-                <li><a href="{{ url('/register') }}">Login/SingUp</a></li>
+                <!-- <li><a href="{{ url('/registerr') }}">Login/SingUp</a></li> -->
             </ul>
-
-            <div class="burger">
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="nav-auth">
+                @auth
+                <form action="{{ url('/logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
+                @else
+                <a href="{{ url('/login') }}" class="btn-login">Login</a>
+                @endauth
             </div>
+
+
+            <!-- <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div> -->
         </div>
     </nav>
 

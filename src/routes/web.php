@@ -27,8 +27,13 @@ Route::post('/update/{id}', [ProductController::class, 'update']);
 
 Route::get('/products/filter', [ProductController::class, 'filter']);
 
-Route::get('/register', [LoginController::class, 'showRegisterForm']);
+Route::get('/registerr', [LoginController::class, 'showRegisterForm']);
 
 
 Route::get('/hello', [LoginController::class, 'hello']);
-Route::post('/register', [LoginController::class, 'register']);
+
+Route::post('/registration', [LoginController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'getLogin']);
+
+Route::post('login', [LoginController::class, 'login']);

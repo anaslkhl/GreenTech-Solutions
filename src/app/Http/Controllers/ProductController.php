@@ -40,7 +40,7 @@ class ProductController extends Controller
         return view('home', compact('products'));
     }
 
-    public function getCategory()   
+    public function getCategory()
     {
         $products = Product::all();
         return view('product', compact('products'));
@@ -78,10 +78,9 @@ class ProductController extends Controller
         }
 
         if ($request->category) {
-            $query->whereHas('category', function($q) use ($request){
-                $q->where('name',$request->category);
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('name', $request->category);
             });
-
         }
 
         $products = $query->get();

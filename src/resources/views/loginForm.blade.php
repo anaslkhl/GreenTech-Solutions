@@ -12,38 +12,44 @@
     <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Create Account</h2>
 
-        <form action="/register" method="POST" class="space-y-5">
+        <form action="{{ url('/registration') }}" method="POST" class="space-y-5">
 
+            @csrf
             <!-- Name -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input type="text" name="name" required
+                <input type="text" name="name"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
             <!-- Email -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                <input type="email" name="email" required
+                <input type="email" name="email"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
             <!-- Role -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                <select name="role" required
+                <select name="role"
                     class="w-full px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     <option value="">Select Role</option>
                     <option value="admin">Admin</option>
-                    <option value="agent">Agent</option>
-                    <option value="user">User</option>
+                    <option value="client">Client</option>
                 </select>
             </div>
 
             <!-- Password -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input type="password" name="password" required
+                <input type="password" name="password"
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <input type="password" name="password_confirmation"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
@@ -58,6 +64,15 @@
                 <a href="/login" class="text-blue-600 hover:underline">Login</a>
             </p>
         </form>
+        @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <ul class="list-disc pl-5">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     </div>
 
 </body>
