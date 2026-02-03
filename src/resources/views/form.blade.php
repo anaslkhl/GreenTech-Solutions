@@ -22,7 +22,7 @@
 
 
             <div class="sidebar-footer">
-                <a href="" class="nav-item">
+                <a href="/" class="nav-item">
                     <i class="fas fa-home"></i>
                     <span>Retour au site</span>
                 </a>
@@ -38,26 +38,38 @@
 
         <div class="container-pro">
 
-            <form class="product-cont" action="form" method="POST">
+            <form class="product-cont" action="{{ url('store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h3><i class="fas fa-box"></i> Ajouter un produit</h3>
 
                 <label for="name">Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" value="{{ old('name') }}">
+
                 <label for="price">Price</label>
-                <input type="number" name="prix">
+                <input type="number" name="prix" value="{{ old('prix') }}">
+
                 <label for="category">Category</label>
                 <select class="category-select" name="category_id">
                     @foreach($category as $catego)
-                    <option value="{{$catego->id}}">{{$catego->name}}</option>
+                    <option value="{{$catego->id}}" {{ old('category_id') == $catego->id ? 'selected' : '' }}>
+                        {{$catego->name}}
+                    </option>
                     @endforeach
                 </select>
+
                 <label for="description">Description</label>
-                <textarea name="description"></textarea>
-                <label for="imageLink">Image link</label>
-                <input type="file" name="image">
+                <textarea name="description">{{ old('description') }}</textarea>
+
+                <label for="imageLink">Image</label>
+                <input type="file" name="image" accept="image/*">
+
                 <button type="submit">Add</button>
             </form>
+
+            @error('image')
+            <p class="text-red-500">{{ $message }}</p>
+            @enderror
+
         </div>
 
 </body>

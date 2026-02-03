@@ -14,13 +14,30 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+            'name' => 'required|string|max:256',
+            'description' => 'required|string',
+            'prix' => 'required|numeric',
+            'category_id' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048'
+        ]);
+
+
+
+
+        if ($request->hasFile('image')) {
+            // return "image err";
+            $imagePath = $request->file('image')->store('products', 'public');
+        }
+
+
 
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'prix' => $request->prix,
-            'image' => $request->imageLink,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'image' => $imagePath
         ]);
 
 

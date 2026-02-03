@@ -21,9 +21,14 @@
 
             <ul class="nav-links">
                 <li><a href="{{ url('/home') }}">Home</a></li>
-                <li><a href="{{ url('/dashboard') }}">Admin Dashboard</a></li>
                 <li><a href="{{ url('/product') }}">Product detail</a></li>
+
+                @auth
+                @if(auth()->user()->role === 'admin')
+                <li><a href="{{ url('/dashboard') }}">Admin Dashboard</a></li>
                 <li><a href="{{ url('/form') }}">Add Product</a></li>
+                @endif
+                @endauth
                 <li><a href="{{ url('/catalog') }}">Catalog</a></li>
                 <!-- <li><a href="{{ url('/registerr') }}">Login/SingUp</a></li> -->
             </ul>
