@@ -34,7 +34,7 @@
                     <button type="submit" class="btn-logout">Logout</button>
                 </form>
                 @else
-                <a href="{{ url('/login') }}" class="btn-login">Login</a>
+                <a href="{{ url('/registerr') }}" class="btn-login">Login</a>
                 @endauth
             </div>
 
