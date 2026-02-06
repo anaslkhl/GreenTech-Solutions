@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavouritesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RouteController;
@@ -41,3 +42,8 @@ Route::get('/login', [LoginController::class, 'getLogin']);
 Route::post('login', [LoginController::class, 'login']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/favourites', [FavouritesController::class, 'favourites']);
+// Route::get('/favourites/getAll', [FavouritesController::class, 'getAll']);
+
+Route::post('/toggle/{id}', [FavouritesController::class, 'toggle']);

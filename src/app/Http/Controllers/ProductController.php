@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\VarDumper;
 
 class ProductController extends Controller
 {
     //
+    protected $with = ['category'];
 
     public function store(Request $request)
     {
@@ -52,7 +54,6 @@ class ProductController extends Controller
 
     public function getAll()
     {
-
         $products = Product::all();
         return view('home', compact('products'));
     }
@@ -102,5 +103,56 @@ class ProductController extends Controller
 
         $products = $query->get();
         return view('home', compact('products'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function getProducts()
+    {
+        $products = Product::with('category');
+        return $products;
+    }
+
+
+    public function getCategoryNameWithProducts()
+    {
+
+        $product = Product::with('category:id, name')->get();
+    }
+
+
+    public function getPro()
+    {
+        $needCategory = false;
+        $products = Product::all();
+
+        if ($needCategory) {
+            $products->load('category');
+        }
+    }
+
+
+    public function totalFavouriteProductPrice()
+    {
+        User::withSum('favouriteProducts', 'prix')->get();
+    }
+
+
+    public function getProWithCatName()
+    {
+        $product = Product::all();
+        foreach($product as $prod){
+            echo $prod->category->name;
+        }
     }
 }

@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favourites extends Model
 {
-
-    
     //
+
+
+    public function favouriteTable()
+    {
+        return $this->morphTo();
+    }
 }

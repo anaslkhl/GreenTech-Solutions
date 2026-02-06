@@ -153,6 +153,16 @@
                     <button class="btn-view">
                         <i class="fas fa-eye"></i> Voir détails
                     </button>
+                    @auth
+                    <form action="{{ url('/toggle/' . $product->id) }}" method="POST" class="absolute top-3 right-3">
+                        @csrf
+                        <button type="submit" class="bg-white rounded-full p-2 shadow hover:scale-110 transition">
+                            <i class="far fa-heart text-gray-400"></i>
+                            <!-- <i class="fas fa-heart text-red-500"></i> -->
+
+                        </button>
+                    </form>
+                    @endauth
                 </div>
             </div>
             @endforeach
