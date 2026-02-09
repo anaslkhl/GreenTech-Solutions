@@ -47,3 +47,13 @@ Route::get('/favourites', [FavouritesController::class, 'favourites']);
 // Route::get('/favourites/getAll', [FavouritesController::class, 'getAll']);
 
 Route::post('/toggle/{id}', [FavouritesController::class, 'toggle']);
+
+
+
+
+
+Route::get('/getProducts', [ProductController::class, 'getProducts']);
+
+Route::get('/details/{id}', [ProductController::class, 'showDetails']);
+Route::delete('/deleteFav/{id}', [FavouritesController::class, 'deleteFavourite']);
+Route::get('/view/{id}', [ProductController::class, 'view']);

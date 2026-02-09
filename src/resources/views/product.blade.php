@@ -53,9 +53,9 @@
                             </div>
 
                             <div class="product-actions">
-                                <button class="btn-views">
+                                <a href="{{ url('/view/'.$product->id) }}" class="btn-views">
                                     <i class="fas fa-eye"></i> View
-                                </button>
+                                </a>
 
                                 <a href="{{ url('/edit/'.$product->id) }}" class="btn-edit">
                                     <i class="fas fa-edit"></i> Update

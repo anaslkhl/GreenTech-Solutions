@@ -107,16 +107,6 @@ class ProductController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
     public function getProducts()
     {
         $products = Product::with('category');
@@ -155,4 +145,51 @@ class ProductController extends Controller
             echo $prod->category->name;
         }
     }
+
+
+    public function showDetails($id)
+    {
+        $product = Product::find($id);
+        return view('productDetails', compact('product'));
+    }
+
+
+    public function view(Request $request ,$id)
+    {
+        $product = Product::find($id);
+        return view('productDetails', compact('product'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
 }

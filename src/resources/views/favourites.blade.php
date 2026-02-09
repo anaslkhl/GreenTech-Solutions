@@ -1,64 +1,59 @@
 @include('partials.header')
 
-@section('content')
-<div class="p-6">
-    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-        <i class="fas fa-boxes text-indigo-600"></i>
-        Products Management
-    </h2>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        @foreach($products as $product)
-        <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col">
+<head>
+    <meta charset="UTF-8">
+    <title>Products Management</title>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
 
-            <!-- Image -->
-            <div class="relative bg-gray-100 flex justify-center p-4">
-                <img src="{{ asset($product->image) }}" class="h-28 object-contain">
+<body>
 
-                <span class="absolute top-3 right-3 bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-semibold">
-                    En stock
-                </span>
-            </div>
+    <div class="container">
 
-            <!-- Info -->
-            <div class="p-4 flex flex-col flex-grow">
+        <h2>📦 Products Management</h2>
 
-                <span class="text-xs text-indigo-600 font-semibold uppercase tracking-wide">
-                    {{ $product->category->name ?? 'No Category' }}
-                </span>
+        <div class="grid">
+            @foreach($products as $product)
+            <div class="card">
 
-                <h3 class="text-lg font-bold mt-1">{{ $product->name }}</h3>
-
-                <p class="text-sm text-gray-600 mt-2 line-clamp-3 flex-grow">
-                    {{ $product->description }}
-                </p>
-
-                <div class="text-xl font-bold text-indigo-600 mt-3">
-                    {{ $product->prix }} DH
+                <div class="image-box">
+                    <img src="{{ asset($product->image) }}">
+                    <span class="badge">En stock</span>
                 </div>
 
-                <!-- Actions -->
-                <div class="mt-4 flex gap-2">
-                    <button class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 rounded-lg text-sm font-medium transition">
-                        <i class="fas fa-eye mr-1"></i> View
-                    </button>
+                <div class="content">
+                    <span class="category">
+                        {{ $product->category->name ?? 'No Category' }}
+                    </span>
 
-                    <a href="{{ url('/edit/'.$product->id) }}"
-                        class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-lg text-sm font-medium text-center transition">
-                        <i class="fas fa-edit mr-1"></i> Update
-                    </a>
+                    <div class="title">{{ $product->name }}</div>
 
-                    <form action="/products/delete/{{ $product->id }}" method="GET" class="flex-1">
-                        @csrf
-                        <button type="submit"
-                            class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-medium transition">
-                            <i class="fas fa-trash mr-1"></i> Delete
-                        </button>
-                    </form>
+                    <div class="description">
+                        {{ $product->description }}
+                    </div>
+
+                    <div class="price">{{ $product->prix }} DH</div>
+
+                    <div class="actions">
+                        <a href="/view/.{{$product->id}}">View</a>
+                        <form action="/deleteFav/{{ $product->id }}" method="POST" style="flex:1;">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-delete" type="submit">Unlike</button>
+                        </form>
+                    </div>
                 </div>
 
             </div>
+            @endforeach
         </div>
-        @endforeach
+
     </div>
-</div>
+
+</body>
+
+</html>

@@ -29,4 +29,11 @@ class FavouritesController extends Controller
         $request->user()->favouriteProducts()->toggle($id);
         return back();
     }
+
+    public function deleteFavourite(Request $request, $id)
+    {
+        $favourite = Favourites::destroy($id);
+        $favourites = Favourites::all();
+        return view('favourites', compact('favourites'));
+    }
 }
