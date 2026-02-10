@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favourites;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FavouritesController extends Controller
@@ -18,8 +19,8 @@ class FavouritesController extends Controller
 
     public function favourites(Request $request)
     {
-        $products = $request->user()->favouriteProducts;
-        return view('favourites', compact('products'));
+        $favourites = $request->user()->favouriteProducts;
+        return view('favourites', compact('favourites'));
     }
 
 
@@ -32,8 +33,12 @@ class FavouritesController extends Controller
 
     public function deleteFavourite(Request $request, $id)
     {
-        $favourite = Favourites::destroy($id);
-        $favourites = Favourites::all();
+
+        $user = $request->user();
+        $user->favouriteProducts()->detach($id);
+
+        $favourites = $user->favouriteProducts()->get();
+
         return view('favourites', compact('favourites'));
     }
 }

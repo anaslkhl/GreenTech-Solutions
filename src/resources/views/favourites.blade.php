@@ -17,7 +17,7 @@
         <h2>📦 Products Management</h2>
 
         <div class="grid">
-            @foreach($products as $product)
+            @foreach($favourites as $product)
             <div class="card">
 
                 <div class="image-box">

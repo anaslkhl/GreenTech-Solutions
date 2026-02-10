@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class RoleController extends Controller
     public function index()
     {
         //
+
+
     }
 
     /**
@@ -21,6 +24,8 @@ class RoleController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -29,6 +34,11 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
+        Product::create(
+            [
+                'name' => $request->name
+            ]
+        );
     }
 
     /**
@@ -37,6 +47,7 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         //
+        $role = Role::all();
     }
 
     /**
@@ -45,6 +56,8 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
+
+
     }
 
     /**
@@ -53,6 +66,8 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         //
+        $role = Role::findOrfail($role);
+        $role->update(request()->all());
     }
 
     /**
@@ -61,5 +76,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
+        $role = Role::destroy($role);
+        return view('/');
     }
 }
