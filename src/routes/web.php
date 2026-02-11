@@ -18,14 +18,14 @@ Route::get('/product', [ProductController::class, 'getCategory']);
 Route::get('/home', [ProductController::class, 'getAll']);
 
 
-Route::middleware(AdminMiddleware::class)->group(function () {
-    Route::get('/form', [RouteController::class, 'form']);
-    Route::get('/form', [ProductController::class, 'create']);
-    Route::post('/store', [ProductController::class, 'store']);
-    Route::get('/products/delete/{id}', [ProductController::class, 'delete']);
-    Route::get('/edit/{id}', [ProductController::class, 'edit']);
-    Route::post('/update/{id}', [ProductController::class, 'update']);
-});
+// Route::middleware(AdminMiddleware::class)->group(function () {
+// });
+Route::get('/form', [RouteController::class, 'form']);
+Route::get('/form', [ProductController::class, 'create']);
+Route::post('/store', [ProductController::class, 'store']);
+Route::get('/products/delete/{id}', [ProductController::class, 'delete']);
+Route::get('/edit/{id}', [ProductController::class, 'edit']);
+Route::post('/update/{id}', [ProductController::class, 'update']);
 
 
 Route::get('/products/filter', [ProductController::class, 'filter']);

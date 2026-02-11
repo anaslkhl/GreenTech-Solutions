@@ -6,7 +6,10 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\VarDumper;
+use Illuminate\Support\Str;
+
+$destinationPath = __DIR__ . '/../../public/img/products';
+
 
 class ProductController extends Controller
 {
@@ -23,14 +26,14 @@ class ProductController extends Controller
             'category_id' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048'
         ]);
-
-
-
+        $imagePath = null;
 
         if ($request->hasFile('image')) {
-            // return "image err";
-            $imagePath = $request->file('image')->store('products', 'public');
+            $image = $request->file('image');
+
+            $imagePath = $image->store('products', 'public');
         }
+
 
 
 
@@ -141,7 +144,7 @@ class ProductController extends Controller
     public function getProWithCatName()
     {
         $product = Product::all();
-        foreach($product as $prod){
+        foreach ($product as $prod) {
             echo $prod->category->name;
         }
     }
@@ -154,42 +157,9 @@ class ProductController extends Controller
     }
 
 
-    public function view(Request $request ,$id)
+    public function view(Request $request, $id)
     {
         $product = Product::find($id);
         return view('productDetails', compact('product'));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
 }

@@ -142,7 +142,12 @@
             @foreach($products as $product)
             <div class="product-card">
                 <div class="product-image">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="Plante Médicinale">
+                    @if($product->image)
+                    <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
+                    @else
+                    <p>No image available</p>
+                    @endif
+
                     <div class="product-status in-stock">En stock</div>
                 </div>
                 <div class="product-info">

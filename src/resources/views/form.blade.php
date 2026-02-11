@@ -61,7 +61,7 @@
                 <textarea name="description">{{ old('description') }}</textarea>
 
                 <label for="imageLink">Image</label>
-                <input type="file" name="image" accept="image/*">
+                <input type="file" name="image">
 
                 <button type="submit">Add</button>
             </form>
